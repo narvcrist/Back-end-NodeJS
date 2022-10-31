@@ -4,8 +4,16 @@ const mongoose = require('mongoose');
 const app = express(); //Objeto app (Núcleo de la aplicacion)
 
 const port = process.env.PORT || 3000;
+
 //Para que pueda leer los contenidos enviados en formato JSON.
 app.use(bodyParser.json()); 
+
+// Configurar cabeceras y cors
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 //Conexion a la base de datos MongoDB
 
